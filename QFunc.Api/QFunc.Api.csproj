@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+      <UserSecretsId>584c9820-fc0d-4536-9c9c-f422bb733e35</UserSecretsId>
+  </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Mapster" Version="7.4.0-pre03" />
+        <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\QFunc.Application\QFunc.Application.csproj" />
+      <ProjectReference Include="..\QFunc.Contracts\QFunc.Contracts.csproj" />
+      <ProjectReference Include="..\QFunc.Infrastructure\QFunc.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>
