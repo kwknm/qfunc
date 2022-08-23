@@ -1,14 +1,16 @@
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using QFunc.Application.Identity.Commands.Register;
-using QFunc.Application.Identity.Common;
+
 using QFunc.Application.Identity.Queries.Login;
 using QFunc.Contracts.Identity;
 
 namespace QFunc.Api.Controllers;
 
 [Route("api/identity")]
+[AllowAnonymous]
 public class IdentityController : ApiController
 {
     private readonly ISender _mediator;
