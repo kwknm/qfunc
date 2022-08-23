@@ -21,12 +21,14 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<I
 
     public async Task<ErrorOr<IdentityResult>> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
+        await Task.CompletedTask; // todo : remove it
+        
         // Check if user already exists
-        if (_userRepository.GetUserByUserName(request.UserName) is not null)
+        if (_userRepository.GetByUserName(request.UserName) is not null)
         {
             return Errors.User.DuplicateUserName;
         }
-        if ( _userRepository.GetUserByEmail(request.Email) is not null)
+        if ( _userRepository.GetByEmail(request.Email) is not null)
         {
             return Errors.User.DuplicateEmail;
         }

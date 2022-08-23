@@ -1,10 +1,10 @@
 using QFunc.Api;
-using QFunc.Api.Common.Mapping;
 using QFunc.Application;
 using QFunc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
+    builder.Services.AddAuthentication();
     builder.Services
         .AddPresentation()
         .AddApplication()
@@ -14,8 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 {
     app.UseHttpsRedirection();
+    app.UseAuthentication();
     app.UseAuthorization();
-
+    
     // Configure Swagger
     if (app.Environment.IsDevelopment())
     {

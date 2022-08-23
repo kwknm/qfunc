@@ -24,18 +24,19 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, ErrorOr<IdentityRes
         await Task.CompletedTask; // todo : remove it
 
         // Validate the user exists
-        if (_userRepository.GetUserByUserName(request.UserName) is not User user)
+        if (_userRepository.GetByUserName(request.UserName) is not User user)
         {
             return Errors.Identity.InvalidCredentials;
         }
         
         // Validate the password
+        // todo : verify passwords
         if (user.PasswordHash != request.Password)
         {
             return Errors.Identity.InvalidCredentials;
         }
         
-        // Create JWT
+        // Create a JWT token
         var token = _jwtTokenGenerator.GenerateToken(user.Id, user.UserName);
         return new IdentityResult
         {
